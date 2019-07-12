@@ -3,11 +3,10 @@ public class FieldIsNull extends Exception {
 
     public FieldIsNull(String message){
         this.message = message;
-        System.out.println(message);
     }
 
     public FieldIsNull(){
-        System.out.println("Field is null");
+        this.message = "Field cannot be null";
     }
 
     public String getMessage(){
