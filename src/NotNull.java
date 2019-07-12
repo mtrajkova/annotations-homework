@@ -5,6 +5,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface ThrowErrorIfNull {
+public @interface NotNull {
     String message() default "none";
 }

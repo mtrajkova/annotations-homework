@@ -2,16 +2,16 @@ import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
 
-public class ThrowErrorIfNullImplementation {
+public class NotNullImplementation {
     Phone phone;
     List<Field> annotatedFields;
 
-    public ThrowErrorIfNullImplementation() {
+    public NotNullImplementation() {
         phone = new Phone();
         annotatedFields = Arrays.asList(phone.getClass().getFields());
     }
 
-    public ThrowErrorIfNullImplementation(Phone phone) {
+    public NotNullImplementation(Phone phone) {
         this.phone = phone;
         annotatedFields = Arrays.asList(phone.getClass().getFields());
     }
@@ -19,8 +19,8 @@ public class ThrowErrorIfNullImplementation {
     public void setup() throws FieldIsNull, IllegalAccessException {
         for (Field field : annotatedFields) {
             if (field.get(phone) == null) {
-                if (field.isAnnotationPresent(ThrowErrorIfNull.class)) {
-                    ThrowErrorIfNull throwErrorIfNull = field.getAnnotation(ThrowErrorIfNull.class);
+                if (field.isAnnotationPresent(NotNull.class)) {
+                    NotNull throwErrorIfNull = field.getAnnotation(NotNull.class);
 
                     if (!throwErrorIfNull.message().equals("none"))
                         throw new FieldIsNull(throwErrorIfNull.message());
